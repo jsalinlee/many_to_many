@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <he.0.d>
+        <meta charset="utf-8">
+        <title>Many to Many Relationship</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'mtm/css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'mtm/css/skeleton.css' %}">
+    </head>
+
+    <body>
+        <form action="/add_form" method="post">
+        {% csrf_token %}
+            <input type="submit" name="add_entry" value="Add User">
+        </form>
+        {% for user in users %}
+            <h5>{{ user.fname }} {{ user.lname }}</h5>
+                <form class="" action="/show/{{ user.id }}" method="post">
+                {% csrf_token %}
+                    <input type="submit" name="show" value="Show">
+                </form>
+        {% endfor %}
+    </body>
+</html>
